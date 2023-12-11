@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MRUController">
+    <children>
+        <Separator layoutY="47.0" prefHeight="172.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
+        <Separator layoutY="325.0" prefHeight="185.0" prefWidth="1280.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+
+        <Label layoutX="1066.0" layoutY="624.0" prefHeight="82.0" prefWidth="217.0" text="version dev-mode" AnchorPane.bottomAnchor="13.600000000000023" AnchorPane.rightAnchor="-3.599999999999909">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="47.0" text="Movimento Retilíneo Uniforme (MRU)" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="47.0">
+             <font>
+                 <Font name="Verdana" size="44.0" />
+             </font>
+         </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="35.0" layoutX="222.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" width="783.0" />
+      <Text layoutX="308.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movimento Retilíneo Uniforme (MRU) é o movimento que ocorre com velocidade constante em uma trajetória reta." />
+      <TextField fx:id="velocityInitialField" layoutX="539.0" layoutY="174.0" promptText="Velocidade Inicial (v0)" />
+      <TextField fx:id="velocityFinalField" layoutX="540.0" layoutY="234.0" promptText="Velocidade Final (v)" />
+      <TextField fx:id="positionInitialField" layoutX="540.0" layoutY="300.0" promptText="Posição Inicial (s0)" />
+      <TextField fx:id="positionFinalField" layoutX="540.0" layoutY="368.0" promptText="Posição Final (s)" />
+      <TextField fx:id="timeField" layoutX="539.0" layoutY="434.0" promptText="Tempo (t)" />
+      <Label fx:id="resultLabel" layoutX="176.0" layoutY="212.0" prefHeight="247.0" prefWidth="332.0" text="(AVISO OU RESULTADO)" />
+      <Button fx:id="calcButton" layoutX="589.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleCalculate" text="Calcular" />
+      <Text layoutX="540.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Inicial V0:" />
+      <Text layoutX="540.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Final v:" />
+      <Text layoutX="540.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Inicial s0: " />
+      <Text layoutX="540.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Final (s) :" />
+      <Text layoutX="724.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aceleraçao (a)" />
+      <TextField fx:id="acel" layoutX="724.0" layoutY="234.0" promptText="Aceleracao (a)" />
+    </children>
+</AnchorPane>
