@@ -185,7 +185,6 @@ public class MRUController {
                 v = result; hasV = true; calculatedV = true;
                 System.out.println(result);
             }
- 
          // Verifique se há informações suficientes para calcular a aceleração
             if (!calculatedA && hasV && hasV0 && hasT && !hasA) {
                 result = (v - v0) / t;
@@ -215,7 +214,6 @@ public class MRUController {
                 
                 
         } catch (NumberFormatException e) {
-            // Handle the exception, e.g., show an error message or log it
             resultLabel.setText("Erro: Insira valores válidos em todos os campos.");
             e.printStackTrace();
         }
