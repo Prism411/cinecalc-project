@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MRUVController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MRUVController">
     <children>
         <Separator layoutY="47.0" prefHeight="172.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
         <Separator layoutY="325.0" prefHeight="185.0" prefWidth="1280.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -24,34 +24,30 @@
                  <Font name="Verdana" size="44.0" />
              </font>
          </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="35.0" layoutX="222.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" width="783.0" />
-      <Text layoutX="242.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O MRUV é o deslocamento de um corpo no espaço, que ocorre em uma trajetória retilínea, ou seja, que não pertence a qualquer curva ou circunferência.">
+      <Text layoutX="229.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O MRUV é o deslocamento de um corpo no espaço, que ocorre em uma trajetória retilínea, ou seja, que não pertence a qualquer curva ou circunferência.">
          <font>
             <Font size="11.0" />
          </font></Text>
-      <TextField fx:id="velocityInitialField" layoutX="539.0" layoutY="174.0" promptText="Velocidade Inicial (v0)" />
-      <TextField fx:id="velocityFinalField" layoutX="540.0" layoutY="234.0" promptText="Velocidade Final (v)" />
-      <TextField fx:id="positionInitialField" layoutX="540.0" layoutY="300.0" promptText="Posição Inicial (s0)" />
-      <TextField fx:id="positionFinalField" layoutX="540.0" layoutY="368.0" promptText="Posição Final (s)" />
-      <TextField fx:id="timeField" layoutX="539.0" layoutY="434.0" promptText="Tempo (t)" />
-      <Label fx:id="resultLabel" alignment="TOP_LEFT" layoutX="117.0" layoutY="177.0" prefHeight="247.0" prefWidth="382.0" text="(AVISO OU RESULTADO)">
+      <TextField fx:id="velocityInitialField" layoutX="358.0" layoutY="173.0" promptText="Velocidade Inicial (v0)" />
+      <TextField fx:id="velocityFinalField" layoutX="538.0" layoutY="173.0" promptText="Velocidade Final (v)" />
+      <TextField fx:id="positionInitialField" layoutX="357.0" layoutY="245.0" prefHeight="26.0" prefWidth="150.0" promptText="Posição Inicial (s0)" />
+      <TextField fx:id="positionFinalField" layoutX="538.0" layoutY="245.0" prefHeight="26.0" prefWidth="150.0" promptText="Posição Final (s)" />
+      <TextField fx:id="timeField" layoutX="538.0" layoutY="317.0" promptText="Tempo (t)" />
+      <Label fx:id="resultLabel" alignment="TOP_LEFT" layoutX="-41.0" layoutY="283.0" prefHeight="247.0" prefWidth="382.0" text="(AVISO OU RESULTADO)">
          <font>
             <Font size="11.0" />
          </font></Label>
-      <Button fx:id="calcButton" layoutX="589.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleCalculate" text="Calcular" />
-      <Text layoutX="540.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Inicial V0:" />
-      <Text layoutX="540.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Final v:" />
-      <Text layoutX="540.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Inicial s0: " />
-      <Text layoutX="540.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Final (s) :" />
-      <Text layoutX="724.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aceleraçao (a)" />
-      <TextField fx:id="acel" layoutX="724.0" layoutY="234.0" promptText="Aceleracao (a)" />
-      <ComboBox fx:id="velUni" layoutX="918.0" layoutY="174.0" prefWidth="150.0" promptText="Unidade de Velocidade" />
-      <ComboBox fx:id="spaceUni" layoutX="918.0" layoutY="292.0" prefWidth="150.0" promptText="Unidade de Espaço" />
-      <ComboBox fx:id="timeUni" layoutX="918.0" layoutY="434.0" prefWidth="150.0" promptText="Unidade de Tempo" />
-      <Text layoutX="855.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antes de começar a calcular selecione as unidades de tempo! ">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Text>
+      <Button fx:id="calcButton" layoutX="537.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleCalculate" prefHeight="26.0" prefWidth="150.0" text="Calcular" />
+      <Text layoutX="366.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Inicial V0:" />
+      <Text layoutX="564.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Final v:" />
+      <Text layoutX="385.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Inicial s0: " />
+      <Text layoutX="573.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Final (s) :" />
+      <Text layoutX="395.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aceleraçao (a)" />
+      <TextField fx:id="acel" layoutX="357.0" layoutY="317.0" prefHeight="26.0" prefWidth="150.0" promptText="Aceleracao (a)" />
+      <ComboBox fx:id="velUni" layoutX="726.0" layoutY="172.0" prefHeight="26.0" prefWidth="170.0" promptText="Unidade De Velocidade" />
+      <ComboBox fx:id="spaceUni" layoutX="726.0" layoutY="245.0" prefHeight="26.0" prefWidth="170.0" promptText="Unidade De Espaço" />
+      <ComboBox fx:id="timeUni" layoutX="726.0" layoutY="316.0" prefHeight="26.0" prefWidth="170.0" promptText="Unidade De Tempo" />
+      <Text layoutX="575.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo (t)" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="113.0" layoutX="358.0" layoutY="381.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
     </children>
 </AnchorPane>

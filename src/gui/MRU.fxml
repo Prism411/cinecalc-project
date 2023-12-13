@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MRUController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MRUController">
     <children>
         <Separator layoutY="47.0" prefHeight="172.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
         <Separator layoutY="325.0" prefHeight="185.0" prefWidth="1280.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -24,24 +24,24 @@
                  <Font name="Verdana" size="44.0" />
              </font>
          </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="35.0" layoutX="222.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" width="783.0" />
-      <Text layoutX="308.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movimento Retilíneo Uniforme (MRU) é o movimento que ocorre com velocidade constante em uma trajetória reta." />
-      <TextField fx:id="velocityInitialField" layoutX="539.0" layoutY="174.0" promptText="Velocidade Inicial (v0)" />
-      <TextField fx:id="velocityFinalField" layoutX="540.0" layoutY="234.0" promptText="Velocidade Final (v)" />
-      <TextField fx:id="positionInitialField" layoutX="540.0" layoutY="300.0" promptText="Posição Inicial (s0)" />
-      <TextField fx:id="positionFinalField" layoutX="540.0" layoutY="368.0" promptText="Posição Final (s)" />
-      <TextField fx:id="timeField" layoutX="539.0" layoutY="434.0" promptText="Tempo (t)" />
-      <Label fx:id="resultLabel" layoutX="176.0" layoutY="212.0" prefHeight="247.0" prefWidth="332.0" text="(AVISO OU RESULTADO)" />
-      <Button fx:id="calcButton" layoutX="589.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleCalculate" text="Calcular" />
-      <Text layoutX="540.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Inicial V0:" />
-      <Text layoutX="540.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Final v:" />
-      <Text layoutX="540.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Inicial s0: " />
-      <Text layoutX="540.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Final (s) :" />
-      <Text layoutX="724.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aceleraçao (a)" />
-      <TextField fx:id="acel" layoutX="724.0" layoutY="234.0" promptText="Aceleracao (a)" />
-      <ComboBox fx:id="velUni" layoutX="918.0" layoutY="174.0" prefWidth="150.0" promptText="Unidade de Velocidade" />
-      <ComboBox fx:id="spaceUni" layoutX="918.0" layoutY="292.0" prefWidth="150.0" promptText="Unidade de Espaço" />
-      <ComboBox fx:id="timeUni" layoutX="918.0" layoutY="434.0" prefWidth="150.0" promptText="Unidade de Tempo" />
-      <Text layoutX="831.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antes de começar a calcular por favor selecionar as unidades!" />
+      <Text layoutX="335.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movimento Retilíneo Uniforme (MRU) é o movimento que ocorre com velocidade constante em uma trajetória reta." />
+      <TextField fx:id="velocityInitialField" layoutX="375.0" layoutY="173.0" promptText="Velocidade Inicial (v0)" />
+      <TextField fx:id="velocityFinalField" layoutX="554.0" layoutY="173.0" promptText="Velocidade Final (v)" />
+      <TextField fx:id="positionInitialField" layoutX="375.0" layoutY="254.0" promptText="Posição Inicial (s0)" />
+      <TextField fx:id="positionFinalField" layoutX="552.0" layoutY="254.0" promptText="Posição Final (s)" />
+      <TextField fx:id="timeField" layoutX="554.0" layoutY="330.0" promptText="Tempo (t)" />
+      <Label fx:id="resultLabel" layoutX="42.0" layoutY="299.0" prefHeight="247.0" prefWidth="332.0" text="                               (AVISO OU RESULTADO)" />
+      <Button fx:id="calcButton" layoutX="565.0" layoutY="547.0" mnemonicParsing="false" onAction="#handleCalculate" prefHeight="26.0" prefWidth="150.0" text="Calcular" />
+      <Text layoutX="394.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Inicial V0:" />
+      <Text layoutX="580.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Final v:" />
+      <Text layoutX="403.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Inicial s0: " />
+      <Text layoutX="584.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posição Final (s) :" />
+      <Text layoutX="412.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aceleraçao (a)" />
+      <TextField fx:id="acel" layoutX="375.0" layoutY="330.0" promptText="Aceleracao (a)" />
+      <ComboBox fx:id="velUni" layoutX="728.0" layoutY="172.0" prefHeight="26.0" prefWidth="174.0" promptText="Unidade De Velocidade " />
+      <ComboBox fx:id="spaceUni" layoutX="728.0" layoutY="253.0" prefHeight="26.0" prefWidth="174.0" promptText="Unidade De Espaço" />
+      <ComboBox fx:id="timeUni" layoutX="728.0" layoutY="329.0" prefHeight="26.0" prefWidth="174.0" promptText="Unidade De Tempo" />
+      <Text layoutX="602.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo (t)" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="100.0" layoutX="374.0" layoutY="403.0" stroke="BLACK" strokeType="INSIDE" width="533.0" />
     </children>
 </AnchorPane>
