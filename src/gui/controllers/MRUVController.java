@@ -1,12 +1,34 @@
 package gui.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class MRUVController {
+public class MRUVController implements Initializable  {
+	
+	@Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+	   // Populate time units ComboBox
+	   ObservableList<String> timeUnits = FXCollections.observableArrayList("Second", "Hour", "Minute");
+	   timeUni.setItems(timeUnits);
+
+	   // Populate velocity units ComboBox
+	   ObservableList<String> velocityUnits = FXCollections.observableArrayList("m/s", "km/h", "foot/s", "mph");
+	   velUni.setItems(velocityUnits);
+
+	   // Populate space units ComboBox
+	   ObservableList<String> spaceUnits = FXCollections.observableArrayList("m", "km", "foot", "yd", "miles");
+	   spaceUni.setItems(spaceUnits);
+	    }
 
     @FXML
     private TextField velocityInitialField;
@@ -28,15 +50,30 @@ public class MRUVController {
     
     @FXML
     private TextField acel;
-
+    
+    @FXML
+    private ComboBox<String> timeUni;
+    @FXML
+    private ComboBox<String> velUni;
+    @FXML
+    private ComboBox<String> spaceUni;
+    
     @FXML
     private void handleCalculate(ActionEvent event) {
-        boolean calculatedS0 = false;
-        boolean calculatedS = false;
-        boolean calculatedV0 = false;
-        boolean calculatedV = false;
-        boolean calculatedT = false;
-        boolean calculatedA = false;
+    	   boolean calculatedS0 = false;
+           boolean calculatedS = false;
+           boolean calculatedV0 = false;
+           boolean calculatedV = false;
+           boolean calculatedT = false;
+           boolean calculatedA = false;
+           
+           boolean convertedS0 = false;
+           boolean convertedS = false;
+           boolean convertedV0 = false;
+           boolean convertedV = false;
+           boolean convertedT = false;
+           boolean convertedA = false;
+
         // Obtenha os valores dos campos de texto
         String v0Text = velocityInitialField.getText();
         String vText = velocityFinalField.getText();
@@ -62,27 +99,33 @@ public class MRUVController {
             double t = hasT ? Double.parseDouble(tText) : 0.0;
             double a = hasA ? Double.parseDouble(aText) : 0.0;
             
-            if (hasV) {            
+            if (hasV && !convertedV) { 
+            	v = convertVelocity(v);
                 velocityFinalField.setText(String.valueOf(v));
                 calculatedV = true;
             }
-            if (hasA) {            
+            if (hasA && !convertedA) {
+            	a = convertVelocity(a);
                 acel.setText(String.valueOf(a));
                 calculatedA = true;
             }
-            if (hasV0) {            
+            if (hasV0 && !convertedV0) {
+            	v0 = convertVelocity(v0);
             	velocityInitialField.setText(String.valueOf(v0));
             	calculatedV0 = true;
             }
-            if (hasS0) {            
+            if (hasS0 && !convertedS0) {  
+            	s0 = convertVelocity(s0);
             	positionInitialField.setText(String.valueOf(s0));
             	calculatedS0 = true;
             }
-            if (hasS) {            
+            if (hasS && !convertedS) {     
+            	s = convertVelocity(s);
             	positionFinalField.setText(String.valueOf(s));
             	calculatedS = true;
             }
-            if (hasT && calculatedT) {            
+            if (hasT && calculatedT && !convertedT) {
+            	t = convertVelocity(t);
             	timeField.setText(String.valueOf(t));
             	calculatedT = true;
             }
@@ -131,7 +174,12 @@ public class MRUVController {
             if (!calculatedA && hasS && hasV && hasV0 && hasT && hasS0) {
                 result = (2 * (s - s0) - v0 * t) / Math.pow(t, 2);
                 resultLabel.setText("Aceleração (a): " + result + " m/s^2");
+                if (v0 > v) {
                 a = result;
+                a = a*(-1);
+                }else {
+                a = result;
+                }
                 hasA = true;
                 calculatedA = true;
                 System.out.println(result);
@@ -201,6 +249,82 @@ public class MRUVController {
             e.printStackTrace();
         }
     }
+
+    private double convertTime(double time) {
+    	String selectedTimeUnit = timeUni.getValue();
+    	double timeConversionFactor;
+    	  // Convert time to seconds
+        switch (selectedTimeUnit) {
+            case "Second":
+                timeConversionFactor = 1.0;
+                break;
+            case "Minute":
+                timeConversionFactor = 60.0;
+                break;
+            case "Hour":
+                timeConversionFactor = 3600.0;
+                break;
+            default:
+                timeConversionFactor = 1.0;
+                break;
+        }
+        return (time * timeConversionFactor);
+    }
+    private double convertSpace(double space) {
+    	String selectedSpaceUnit = spaceUni.getValue();
+    	double spaceConversionFactor;
+    	 // Convert space to meters
+        switch (selectedSpaceUnit) {
+            case "m":
+                spaceConversionFactor = 1.0;
+                break;
+            case "km":
+                spaceConversionFactor = 1000.0;
+                break;
+            case "foot":
+                spaceConversionFactor = 0.3048;
+                break;
+            case "yd":
+                spaceConversionFactor = 0.9144;
+                break;
+            case "miles":
+                spaceConversionFactor = 1609.34;
+                break;
+            default:
+                spaceConversionFactor = 1.0;
+                break;
+        }
+        
+        return (space * spaceConversionFactor);
+    }
+    
+    private double convertVelocity(double velo) {
+        // Get the selected units from ComboBoxes
+        String selectedVelocityUnit = velUni.getValue();
+        // Define conversion factors for different units
+        double velocityConversionFactor;
+        // Convert velocity to m/s
+        switch (selectedVelocityUnit) {
+            case "m/s":
+                velocityConversionFactor = 1.0;
+                break;
+            case "km/h":
+                velocityConversionFactor = 0.277778; // 1 km/h = 0.277778 m/s
+                break;
+            case "foot/s":
+                velocityConversionFactor = 0.3048; // 1 foot/s = 0.3048 m/s
+                break;
+            case "mph":
+                velocityConversionFactor = 0.44704; // 1 mph = 0.44704 m/s
+                break;
+            default:
+                velocityConversionFactor = 1.0;
+                break;
+        }
+        return (velo * velocityConversionFactor);
+
+    }
 }
+
 
 
