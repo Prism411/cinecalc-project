@@ -20,6 +20,6 @@ O cineCalc é um projeto desenvolvido por alunos da Universidade Federal de Rond
 
 ## Autores
 
-- Jader Louis
-- Nicolas Sales
-- Wyllgner França
+- Jader Louis @prism411
+- Nicolas Sales @realnfcs
+- Wyllgner França @Wyllgner
