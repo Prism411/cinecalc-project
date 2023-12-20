@@ -1,3 +1,13 @@
+/*
+ * Projeto: CineCalc
+ * Desenvolvido por:
+ * Jader Louis @Prism411 https://github.com/Prism411
+ * Nicolas Sales @realnfcs https://github.com/realnfcs
+ * Wyllgner França @Wyllgner https://github.com/Wyllgner
+ * Link do GIT: https://github.com/Prism411/cinecalc-project
+ * Universidade Federal de Rondônia
+ */
+
 package application;
 
 import javafx.application.Application;

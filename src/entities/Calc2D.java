@@ -2,8 +2,8 @@ package entities;
 
 public class Calc2D {
 
-	private double V, Vx, Vy0, Vy, V0, g, t, h, hmax, alpha, range; 
-	boolean bool_V=false, bool_Vx=false, bool_Vy0=false, bool_Vy=false, bool_V0=false, bool_g=false, bool_t=false, bool_h=false, bool_hmax=false, bool_alpha=false, bool_range=false;
+	private double V, Vx, Vfx, ax, Vy0, Vy, ay, V0, g, t, h, hmax, alpha, range; 
+	boolean bool_V=false, bool_Vx=false, bool_Vfx=false, bool_ax=false, bool_Vy0=false, bool_Vy=false, bool_ay=false, bool_V0=false, bool_g=false, bool_t=false, bool_h=false, bool_hmax=false, bool_alpha=false, bool_range=false;
 	
 	public Calc2D() {
 	}
@@ -11,10 +11,13 @@ public class Calc2D {
 	 /**
      * Construtor da classe {@code Calc2D} que permite a inicialização dos atributos com valores específicos.
      *
-     * @param v     Velocidade resultante
+     * @param v     Velocidade resultante	
      * @param vx    Velocidade inicial no eixo x
+     * @param vfx   Velocidade final no eixo x
+     * @param ax    Aceleração no eixo x
      * @param vy0   Velocidade inicial no eixo y
      * @param vy    Velocidade final no eixo y
+     * @param ay    Acelereção no eixo y
      * @param v0    Velocidade inicial resultante
      * @param g     Aceleração devido à gravidade
      * @param t     Tempo
@@ -28,15 +31,31 @@ public class Calc2D {
      */
 	public Calc2D(double v, double vx, double vy0, double vy, double v0, double g, double t, double h, double hmax,
 			double alpha, double range,String time, String Space, String velo) {
+		this.V = v;
 		this.V = convertVelo(v,velo);
-		this.Vx = convertVelo(vx,velo);
-		this.Vy0 =  convertVelo(vy0,velo);
+		
+		this.Vx = vx;
+		this.Vy0 = convertVelo(vx,velo);
+		
+		this.Vy0 =  vy0;
+		this.Vy0 = convertVelo(vy0,velo);
+		
+		this.Vy = vy; 
 		this.Vy = convertVelo(vy,velo);
+		
+		this.V0 = v0;
 		this.V0 = convertVelo(v0,velo);
+		
 		this.g = g;
+		
+		this.t = t;
 		this.t = convertTime(t,time);
+		
+		this.h = h;
 		this.h = convertSpace(h,Space);
-		this.hmax = convertSpace(h,Space);
+		
+		this.hmax = hmax;
+		this.hmax = convertSpace(hmax,Space);
 		this.alpha = alpha;
 		this.range = range;
 	}
@@ -44,7 +63,7 @@ public class Calc2D {
 	/**
 	 * Calcula várias grandezas relacionadas ao movimento bidimensional e gera uma string com os resultados.
 	 * <p>
-	 * Este método utiliza valores pré-definidos ou calculados para as variáveis relacionadas ao movimento bidimensional,
+	 * Este método utiliza 	valores pré-definidos ou calculados para as variáveis relacionadas ao movimento bidimensional,
 	 * tais como velocidades iniciais e finais, tempo de voo, altura máxima, alcance, etc.
 	 * A aceleração devida à gravidade é considerada como 9.81 m/s².
 	 * Os resultados dos cálculos são armazenados internamente nos atributos da classe e retornados como uma string.
@@ -80,7 +99,7 @@ public class Calc2D {
         }
 
         // Cálculo da velocidade inicial no eixo y se necessário
-        if (V0 != 0.01 && alpha != 0.01 && t != 0.01 && Vy == 0.01 && !bool_Vy) {
+        if (V0 != 0.01 && alpha != 0.01 && t != 0.01 && !bool_Vy) {
             this.setVy(this.vertical_velocity_component(V0, alpha, g, t));
             bool_Vy = true;
             resultado.append("Velocidade Inicial Y: ").append(Vy).append("m/s \n");
@@ -110,8 +129,8 @@ public class Calc2D {
         // Cálculo do tempo de voo com altura específica se necessário
         if (Vy0 != 0.01 && h != 0.01 && t == 0.01 && !bool_t) {
             this.setT(this.time_of_flight(Vy0, g, h));
-            bool_t = true;
-            resultado.append("Tempo de Voo: ").append(t).append("s \n");
+	            bool_t = true;
+	            resultado.append("Tempo de Voo: ").append(t).append("s \n");
         }
 
         // Cálculo da altura máxima com altura específica se necessário
@@ -134,7 +153,61 @@ public class Calc2D {
             bool_V = true;
             resultado.append("Velocidade Resultante: ").append(V).append("m/s \n");
         }
-
+        
+        // Cálculo da velocidade final do eixo x
+        if (Vx != 0.01 && ax != 0.01 && t != 0.01 && !bool_Vfx) {
+        	this.setVfx(this.final_velocity(Vx, ax, t));
+        	bool_Vfx = true;
+        	resultado.append("Velocidade Final no eixo X: ").append(Vfx).append("m/s \n");
+        }
+        
+        if (Vx != 0.01 && ax != 0.01 && range != 0.01 && !bool_Vfx) {
+        	this.setVfx(this.final_velocity_deltaXY(Vx, ax, range));
+        	bool_Vfx = true;
+        	resultado.append("Velocidade Final no eixo X: ").append(Vfx).append("m/s \n");
+        }
+        
+        if (Vx != 0.01 && range != 0.01 && t != 0.01 && !bool_Vfx) {
+        	this.setVfx(this.final_velocity_without_ax(Vx, range, t));
+        	bool_Vfx = true;
+        	resultado.append("Velocidade Final no eixo X: ").append(Vfx).append("m/s \n");
+        }
+        
+        // Cálculo da aceleração no eixo x
+        
+        if (Vx != 0.01 && Vfx != 0.01 && t != 0.01 && !bool_ax) {
+        	this.setAx(this.aceleration(Vx, Vfx, t));
+        	bool_ax = true;
+        	resultado.append("Aceleração no eixo X: ").append(ax).append("m/s² \n");
+        }
+        
+        if (Vx != 0.01 && range != 0.01 && t != 0.01 && !bool_ax) {
+        	this.setAx(this.aceleration2(range, Vx, t));
+        	bool_ax = true;
+        	resultado.append("Aceleração no eixo X: ").append(ax).append("m/s² \n");
+        }
+        
+        // Cálculo da aceleração no eixo y
+        if (Vy0 != 0.01 && Vy != 0.01 && t != 0.01 && !bool_ay) {
+        	this.setAy(this.aceleration(Vy0, Vy, t));
+        	bool_ay = true;
+        	resultado.append("Aceleração no eixo Y: ").append(ay).append("m/s² \n");
+        }
+        
+        // Cálculo da velocidade inicial no eixo y
+        if (Vy != 0.01 && h != 0.01 && t != 0.01 && !bool_Vy0) {
+        	this.setVy0(this.vertical_initial_velocity(Vy, h, t));
+        	bool_Vy0 = true;
+        	resultado.append("Velocidade Inicial no eixo Y: ").append(Vy0).append("m/s \n");
+        }
+        
+        // Cálculo da velocidade inicial
+        if (Vx != 0.01 &&  Vy0 != 0.01 && !bool_V0) {
+        	this.setV0(this.initial_velocity(Vx, Vy0));
+        	bool_V0 = true;
+        	resultado.append("Velocidade Inicial: ").append(V0).append("m/s \n");
+        }
+        
         // Incremento do contador
         cont++;
     }
@@ -147,6 +220,36 @@ public class Calc2D {
     // Getters e setters da classe omitidos para simplificação
 
     // Métodos privados de conversão de unidades omitidos para simplificação
+
+	// Métodos comuns de x e y
+	
+	double final_velocity(double vi, double a, double t) {
+		return vi + a * t;
+	}
+	
+	double final_velocity_without_ax(double Vx, double range, double t) {
+		return -Vx + (range * 2) / t;
+	}
+	
+	double final_velocity_deltaXY(double vi, double a, double deltaXY) {
+		return Math.sqrt(Math.pow(vi, 2) + 2 * a * deltaXY);
+	}
+
+	double aceleration(double vi, double vf, double t) {
+		return (vi - vf) / t;
+	}
+
+	double aceleration2(double range, double Vx, double t) {
+		return 2 * (range - Vx * t) / Math.pow(t, 2);
+	}
+	
+	double initial_velocity(double Vx, double Vy0) {
+		return Math.sqrt(Math.pow(Vx, 2) + Math.pow(Vy0, 2));
+	}
+	
+	double vertical_initial_velocity(double Vy, double h, double t) {
+		return - Vy + (h * 2) / t;
+	}
 	
 	double horizontal_velocity_component(double V0, double alpha) {
 		return V0 * Math.cos(alpha);
@@ -206,6 +309,24 @@ public class Calc2D {
 	public void setVx(double vx) {
 		Vx = vx;
 		this.bool_Vx = true;
+	}
+
+	public double getVfx() {
+		return Vfx;
+	}
+
+	public void setVfx(double vfx) {
+		Vfx = vfx;
+		this.bool_Vfx = true;
+	}
+
+	public double getAx() {
+		return ax;
+	}
+
+	public void setAx(double ax) {
+		this.ax = ax;
+		this.bool_ax = true;
 	}
 
 	public double getVy0() {
@@ -269,6 +390,15 @@ public class Calc2D {
 	public void setVy(double vy) {
 		Vy = vy;
 		this.bool_Vy = true;
+	}
+	
+	public double getAy() {
+		return ay;
+	}
+
+	public void setAy(double ay) {
+		this.ay = ay;
+		this.bool_ay = true;
 	}
 
 	public double getHmax() {

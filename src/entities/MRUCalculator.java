@@ -51,12 +51,6 @@ public class MRUCalculator {
 		this.unidadeVelocidade = unidadeVelocidade;
 		this.unidadeEspaco = unidadeEspaco;
 	}
-
-	// Método para calcular o deslocamento (deltaPos) usando a equação do MRU
-    public Double calcularDeltaPos() {
-        deltaPos = (initialVelocity - finalVelocity);
-        return deltaPos;
-    }
     
     public Double calcularDeltaPosAlt() {
         deltaPos = initialVelocity * t;
@@ -118,11 +112,6 @@ public class MRUCalculator {
             		deltaCheck = true;
             		resultado.append("Deslocamento: ").append(deltaPos).append("\n");}
             		
-            	if (deltaPos == 0 && initialVelocity != 0 && finalVelocity != 0 && !deltaCheck) {
-            		calcularDeltaPos();
-            		deltaCheck = true;
-            		resultado.append("Deslocamento: ").append(deltaPos).append("\n");
-            	}
                 if (initialVelocity == 0 && finalVelocity != 0 && !initVelo) {
                     calcularVelocidadeInicial();
                     initVelo = true;
@@ -146,8 +135,8 @@ public class MRUCalculator {
                     finPos = true;
                     resultado.append("Posicao Final: ").append(finalPos).append("m \n");
                 }
-
-                if (t == 0 && finalVelocity != 0 && initialVelocity != 0 && a != 0 && !tCheck) {
+                //	t = deltaPos / initialVelocity;
+                if (t == 0 && deltaPos != 0 && initialVelocity != 0 && !tCheck) {
                     calcularTempo();
                     tCheck = true;
                     resultado.append("Tempo: ").append(t).append("s \n");
@@ -156,7 +145,7 @@ public class MRUCalculator {
                 if (a == 0 && finalVelocity != 0 && initialVelocity != 0 && t != 0 && !aCheck) {
                     calcularAceleracao();
                     aCheck = true;
-                    resultado.append("Aceleracao: ").append(a).append("\n");
+                    resultado.append("Aceleracao = Velocidade Constante (0)").append(a).append("\n");
                 }
             } catch (IllegalStateException e) {
                 // Lidar com a exceção, por exemplo, imprimir uma mensagem de erro
