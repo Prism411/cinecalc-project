@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -72,7 +74,13 @@ public class MRUController implements Initializable {
         String selectedSpaceUnit = spaceUni.getValue();
         String selectedVelocityUnit = velUni.getValue();
     	String selectedTimeUnit = timeUni.getValue();
-    	
+    	if (selectedSpaceUnit == null || selectedVelocityUnit == null || selectedTimeUnit == null) {
+    	    // Pelo menos uma das variáveis é nula, exibir alerta
+    	    Alert alert = new Alert(AlertType.ERROR);
+    	    alert.setTitle("Erro");
+    	    alert.setHeaderText("ERRO 01!");
+    	    alert.setContentText("Por favor, selecione todas as unidades de medida!.");
+    	    alert.showAndWait();}else {
     	
         // Verifique quais valores foram fornecidos pelo usuário
         boolean hasV0 = !v0Text.isEmpty();
@@ -94,15 +102,20 @@ public class MRUController implements Initializable {
             
         	MRUCalculator mru = new MRUCalculator(v0,v,s0,0.0,s,t,a,selectedTimeUnit,selectedVelocityUnit,selectedSpaceUnit);
         	resultLabel.setText(mru.calculaDados());
-        	
-       
+        	 Alert alert = new Alert(AlertType.CONFIRMATION);
+     	    alert.setTitle("Calculado");
+     	    alert.setHeaderText("Tudo Ocorreu Normalmente!");
+     	    alert.setContentText("os resultados estão na caixa azul!");
+     	    alert.showAndWait();
+        }
    
-        } catch (NumberFormatException e) {
+         catch (NumberFormatException e) {
             resultLabel.setText("Erro: Insira valores válidos em todos os campos.");
             e.printStackTrace();
         }
-    }
     
+    }
+    }
 }
 
 
