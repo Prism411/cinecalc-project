@@ -39,43 +39,49 @@ public class MRUCalculator {
 
 	// Método para calcular o deslocamento (deltaPos) usando a equação do MRU
     public Double calcularDeltaPos() {
-        deltaPos = (initialVelocity + finalVelocity) * t / 2.0;
+        deltaPos = (initialVelocity - finalVelocity);
+        return deltaPos;
+    }
+    
+    public Double calcularDeltaPosAlt() {
+        deltaPos = initialVelocity * t;
         return deltaPos;
     }
 
     // Método para calcular a velocidade final usando a equação do MRU
     public Double calcularVelocidadeFinal() {
-        finalVelocity = initialVelocity + a * t;
+        finalVelocity = initialVelocity;
         return finalVelocity;
     }
 
     // Método para calcular a velocidade inicial usando a equação do MRU
     public Double calcularVelocidadeInicial() {
-        initialVelocity = finalVelocity - a * t;
+        initialVelocity = finalVelocity;
         return initialVelocity;
     }
 
     // Método para calcular o tempo (t) usando a equação do MRU
     public Double calcularTempo() {
-        t = (finalVelocity - initialVelocity) / a;
+        t = deltaPos / initialVelocity;
         return t;
     }
 
     // Método para calcular a aceleração (a) usando a equação do MRU
     public Double calcularAceleracao() {
-        a = (finalVelocity - initialVelocity) / t;
+        a = 0.0;
         return a;
     }
 
     // Método para calcular a posição final usando a equação do MRU
     public Double calcularPosicaoFinal() {
-        finalPos = initialPos + initialVelocity * t + 0.5 * a * t * t;
+        finalPos = initialPos + initialVelocity * t;
         return finalPos;
     }
 
+
     // Método para calcular a posição inicial usando a equação do MRU
     public Double calcularPosicaoInicial() {
-        initialPos = finalPos - initialVelocity * t - 0.5 * a * t * t;
+        initialPos = finalPos - initialVelocity * t;
         return initialPos;
     }
     
@@ -87,39 +93,45 @@ public class MRUCalculator {
 
         while (cont < 8) {
             try {
-            	if (deltaPos == 0 && initialVelocity != 0 && finalVelocity != 0 && t != 0 && !deltaCheck) {
+            	
+            	if (deltaPos == 0 && initialVelocity != 0 && t != 0) {
+            		calcularDeltaPosAlt();
+            		deltaCheck = true;
+            		resultado.append("Deslocamento: ").append(deltaPos).append("\n");}
+            		
+            	if (deltaPos == 0 && initialVelocity != 0 && finalVelocity != 0 && !deltaCheck) {
             		calcularDeltaPos();
             		deltaCheck = true;
             		resultado.append("Deslocamento: ").append(deltaPos).append("\n");
             	}
-                if (initialVelocity == 0 && finalVelocity != 0 && a != 0 && t != 0 && !initVelo) {
+                if (initialVelocity == 0 && finalVelocity != 0 && !initVelo) {
                     calcularVelocidadeInicial();
                     initVelo = true;
                     resultado.append("Inicial Velocity calculada: ").append(initialVelocity).append("\n");
                 }
 
-                if (finalVelocity == 0 && initialVelocity != 0 && a != 0 && t != 0 && !finalVelo) {
+                if (finalVelocity == 0 && initialVelocity != 0 && !finalVelo) {
                     calcularVelocidadeFinal();
                     finalVelo = true;
-                    resultado.append("Velocidade Final: ").append(finalVelocity).append("\n");
+                    resultado.append("Velocidade Final: ").append(finalVelocity).append("m/s \n");
                 }
 
-                if (initialPos == 0 && initialVelocity != 0 && t != 0 && a != 0 && !initPos) {
+                if (initialPos == 0 && initialVelocity != 0 && finalPos != 0 && t != 0 && !initPos) {
                     calcularPosicaoInicial();
                     initPos = true;
-                    resultado.append("Posicao Inicial: ").append(initialPos).append("\n");
+                    resultado.append("Posicao Inicial: ").append(initialPos).append("m \n");
                 }
 
-                if (finalPos == 0 && initialPos != 0 && initialVelocity != 0 && t != 0 && a != 0 && !finPos) {
+                if (finalPos == 0 && initialPos != 0 && initialVelocity != 0 && t != 0 && !finPos) {
                     calcularPosicaoFinal();
                     finPos = true;
-                    resultado.append("Posicao Final: ").append(finalPos).append("\n");
+                    resultado.append("Posicao Final: ").append(finalPos).append("m \n");
                 }
 
                 if (t == 0 && finalVelocity != 0 && initialVelocity != 0 && a != 0 && !tCheck) {
                     calcularTempo();
                     tCheck = true;
-                    resultado.append("Tempo: ").append(t).append("\n");
+                    resultado.append("Tempo: ").append(t).append("s \n");
                 }
 
                 if (a == 0 && finalVelocity != 0 && initialVelocity != 0 && t != 0 && !aCheck) {

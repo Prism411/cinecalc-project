@@ -25,7 +25,7 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		MRUCalculator mru = new MRUCalculator(0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+		MRUCalculator mru = new MRUCalculator(0.0,0.0,0.0,0.0,0.0,0.0,0.0,"s","m/s","m");
 		mru.setFinalVelocity(3.0);
 		mru.setA(5.0);
 		mru.setInitialVelocity(2.0);

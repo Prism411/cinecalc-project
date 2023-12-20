@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MRUController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MRUController">
     <children>
         <Separator layoutY="47.0" prefHeight="172.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
         <Separator layoutY="325.0" prefHeight="185.0" prefWidth="1280.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -30,7 +30,6 @@
       <TextField fx:id="positionInitialField" layoutX="375.0" layoutY="254.0" promptText="Posição Inicial (s0)" />
       <TextField fx:id="positionFinalField" layoutX="552.0" layoutY="254.0" promptText="Posição Final (s)" />
       <TextField fx:id="timeField" layoutX="554.0" layoutY="330.0" promptText="Tempo (t)" />
-      <Label fx:id="resultLabel" layoutX="42.0" layoutY="299.0" prefHeight="247.0" prefWidth="332.0" text="                               (AVISO OU RESULTADO)" />
       <Button fx:id="calcButton" layoutX="565.0" layoutY="547.0" mnemonicParsing="false" onAction="#handleCalculate" prefHeight="26.0" prefWidth="150.0" text="Calcular" />
       <Text layoutX="394.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Inicial V0:" />
       <Text layoutX="580.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Final v:" />
@@ -43,5 +42,6 @@
       <ComboBox fx:id="timeUni" layoutX="728.0" layoutY="329.0" prefHeight="26.0" prefWidth="174.0" promptText="Unidade De Tempo" />
       <Text layoutX="602.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo (t)" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="100.0" layoutX="374.0" layoutY="403.0" stroke="BLACK" strokeType="INSIDE" width="533.0" />
+      <Label fx:id="resultLabel" alignment="TOP_LEFT" layoutX="375.0" layoutY="403.0" prefHeight="100.0" prefWidth="533.0" text="(AVISO OU RESULTADO)" />
     </children>
 </AnchorPane>
