@@ -9,36 +9,44 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TwoDController">
-    <children>
-        <Separator layoutY="47.0" prefHeight="172.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
-        <Separator layoutX="7.0" layoutY="532.0" prefHeight="185.0" prefWidth="1280.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="-7.0" />
-
-        <Label layoutX="1066.0" layoutY="624.0" prefHeight="82.0" prefWidth="217.0" text="version dev-mode" AnchorPane.bottomAnchor="13.600000000000023" AnchorPane.rightAnchor="-3.599999999999909">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MRUController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="104.0" layoutX="27.0" layoutY="479.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
+      <Label fx:id="resultLabel" alignment="TOP_LEFT" layoutX="34.0" layoutY="484.0" prefHeight="94.0" prefWidth="457.0" text="(AVISO OU RESULTADO)" />
+      <Text layoutX="561.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade vertical (Vy):" wrappingWidth="134.52032470703125" />
+      <Separator layoutY="47.0" prefHeight="172.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
+      <Separator layoutY="325.0" prefHeight="185.0" prefWidth="1280.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label layoutX="1066.0" layoutY="624.0" prefHeight="82.0" prefWidth="217.0" text="version dev-mode" AnchorPane.bottomAnchor="13.600000000000023" AnchorPane.rightAnchor="-3.599999999999909">
          <font>
             <Font size="22.0" />
-         </font></Label>
-         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="47.0" prefHeight="56.0" prefWidth="1068.0" text="2D" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="47.0">
-             <font>
-                 <Font name="Verdana" size="44.0" />
-             </font>
-         </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="35.0" layoutX="222.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" width="783.0" />
-      <Text layoutX="579.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teste">
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="47.0" text="2D (Movimento Em Duas Dimensões)" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="252.80000000000018" AnchorPane.topAnchor="47.0">
          <font>
-            <Font size="11.0" />
-         </font></Text>
-      <TextField fx:id="velocityInitialField" layoutX="148.0" layoutY="234.0" promptText="Velocidade Inicial (v0)" />
-      <TextField fx:id="velocityFinalField" layoutX="327.0" layoutY="234.0" promptText="Velocidade Final (v)" />
-      <TextField fx:id="positionInitialField" layoutX="499.0" layoutY="234.0" promptText="Posição Inicial (s0)" />
-      <TextField fx:id="positionFinalField" layoutX="670.0" layoutY="234.0" promptText="Posição Final (s)" />
-      <TextField fx:id="timeField" layoutX="1015.0" layoutY="234.0" promptText="Tempo (t)" />
-      <Button fx:id="calcButton" layoutX="589.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleCalculate" text="Calcular" />
-      <TextField fx:id="acel" layoutX="843.0" layoutY="234.0" promptText="Aceleracao (a)" />
-      <TextField fx:id="gravidade" layoutX="148.0" layoutY="326.0" promptText="Gravidade (g)" />
-      <TextField fx:id="altura" layoutX="327.0" layoutY="326.0" promptText="Altura (h)" />
-      <TextField fx:id="alturaMaxima" layoutX="499.0" layoutY="326.0" promptText="Altura Maxima (Hm)" />
-      <TextField fx:id="Range" layoutX="670.0" layoutY="326.0" promptText="Range" />
-      <TextField fx:id="Alpha" layoutX="843.0" layoutY="326.0" promptText="Alpha" />
-    </children>
+            <Font name="Verdana" size="44.0" />
+         </font>
+      </Label>
+      <TextField fx:id="velocityInitialField" layoutX="375.0" layoutY="173.0" promptText="Velocidade Inicial (v0)" />
+      <TextField fx:id="velocityFinalField" layoutX="554.0" layoutY="173.0" promptText="Velocidade (V)" />
+      <TextField fx:id="initialVerticalVelocityField" layoutX="374.0" layoutY="241.0" promptText="Velocidade Vertical Inicial (Vy0):" />
+      <TextField fx:id="finalVerticalVelocityField" layoutX="552.0" layoutY="241.0" promptText="Velocidade vertical (Vy):" />
+      <TextField fx:id="gravityField" layoutX="552.0" layoutY="309.0" promptText="Gravidade (g)" />
+      <Button fx:id="calcButton" layoutX="553.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleCalculate" prefHeight="26.0" prefWidth="150.0" text="Calcular" />
+      <Text layoutX="388.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Inicial (V0):" />
+      <Text layoutX="580.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade (V):" />
+      <Text layoutX="378.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Horizontal (Vx):" />
+      <TextField fx:id="HorizontalVelocity" layoutX="374.0" layoutY="309.0" promptText="Velocidade Horizontal (Vx):" />
+      <Text layoutX="591.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gravidade (g)" />
+      <Text layoutX="369.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade Vertical Inicial (Vy0):" wrappingWidth="167.99996337890616" />
+      <TextField fx:id="maxHeightField" layoutX="375.0" layoutY="373.0" promptText="Altura Máxima (hmax):" />
+      <Text layoutX="600.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura (h):" wrappingWidth="56.19488525390625" />
+      <Text layoutX="382.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura Máxima (hmax):" wrappingWidth="134.52032470703125" />
+      <TextField fx:id="heightField" layoutX="552.0" layoutY="373.0" promptText="Altura (h):" />
+      <Text layoutX="598.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo (t):" wrappingWidth="56.19488525390625" />
+      <Text layoutX="377.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alpha (alpha):" wrappingWidth="102.47344970703125" />
+      <Text layoutX="600.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Range  (r):" wrappingWidth="56.19488525390625" />
+      <TextField fx:id="alphaField" layoutX="377.0" layoutY="439.0" promptText="Alpha:" />
+      <TextField fx:id="rangeField" layoutX="553.0" layoutY="439.0" promptText="Range:" />
+      <TextField fx:id="timeField" layoutX="554.0" layoutY="497.0" promptText="Tempo (t):" />
+   </children>
 </AnchorPane>

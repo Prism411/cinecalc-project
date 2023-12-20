@@ -1,5 +1,6 @@
 package application;
 	
+import entities.MRUCalculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -24,6 +25,13 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		MRUCalculator mru = new MRUCalculator(0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+		mru.setFinalVelocity(3.0);
+		mru.setA(5.0);
+		mru.setInitialVelocity(2.0);
+		System.out.println(mru.calculaDados());
 		launch(args);
+
+		
 	}
 }

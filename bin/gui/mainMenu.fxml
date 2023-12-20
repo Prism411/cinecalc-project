@@ -22,9 +22,8 @@
                  <Font name="Verdana" size="60.0" />
              </font>
          </Label>
-      <Button fx:id="mruButton" layoutX="526.0" layoutY="298.0" mnemonicParsing="false" text="Movimento Retilíneo Uniforme - MRU" />
-      <Button fx:id="mruvButton" layoutX="482.0" layoutY="208.0" mnemonicParsing="false" text="Movimento Retilíneo Uniformemente Variado - MRUV)" />
-      <Button fx:id="twoDButton" layoutX="526.0" layoutY="393.0" mnemonicParsing="false" text="2D (Movimento em Duas Dimensões)" />
+      <Button fx:id="mruButton" layoutX="525.0" layoutY="244.0" mnemonicParsing="false" text="Movimento Retilíneo Uniforme - MRU" />
+      <Button fx:id="twoDButton" layoutX="527.0" layoutY="335.0" mnemonicParsing="false" text="2D (Movimento em Duas Dimensões)" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccdae7" height="35.0" layoutX="223.0" layoutY="496.0" stroke="BLACK" strokeType="INSIDE" width="783.0" />
       <Text layoutX="321.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criado por academicos da universidade Federal de Rondônia Jáder Louis, Nicolas Sales, Wyllgner França (JNW)." />
     </children>

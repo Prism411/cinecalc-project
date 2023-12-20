@@ -18,9 +18,6 @@ public class MainMenuController implements Initializable {
 	private Button mruButton;
 
 	@FXML
-	private Button mruvButton;
-
-	@FXML
 	private Button twoDButton;
 
 
@@ -28,7 +25,6 @@ public class MainMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Adicionando manipuladores de eventos para os botões
         mruButton.setOnAction(this::openMRUWindow);
-        mruvButton.setOnAction(this::openMRUVWindow);
         twoDButton.setOnAction(this::openTwoDWindow);
     }
 
@@ -37,11 +33,7 @@ public class MainMenuController implements Initializable {
         openNewWindow("/gui/MRU.fxml", "Movimento Retilíneo Uniforme (MRU)");
     }
 
-    // Método para abrir a janela correspondente ao Movimento Retilíneo Uniformemente Variado (MRUV)
-    private void openMRUVWindow(ActionEvent event) {
-        openNewWindow("/gui/MRUV.fxml", "Movimento Retilíneo Uniformemente Variado (MRUV)");
-    }
-
+    
     // Método para abrir a janela correspondente ao Movimento em Duas Dimensões (2D)
     private void openTwoDWindow(ActionEvent event) {
         openNewWindow("/gui/TwoD.fxml", "2D (Movimento em Duas Dimensões)");

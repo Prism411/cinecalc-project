@@ -3,47 +3,50 @@ package gui.controllers;
 import entities.Calc2D;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class TwoDController {
+	public class MRUController {
 
-    @FXML
-    private TextField velocityInitialField;
+	    @FXML
+	    private TextField velocityInitialField;
 
-    @FXML
-    private TextField velocityFinalField;
+	    @FXML
+	    private TextField velocityFinalField;
 
-    @FXML
-    private TextField positionInitialField;
+	    @FXML
+	    private TextField initialVerticalVelocityField;
 
-    @FXML
-    private TextField positionFinalField;
+	    @FXML
+	    private TextField finalVerticalVelocityField;
 
-    @FXML
-    private TextField timeField;
+	    @FXML
+	    private TextField gravityField;
 
-    @FXML
-    private TextField acel;
+	    @FXML
+	    private TextField HorizontalVelocity;
 
-    @FXML
-    private TextField gravidade;
+	    @FXML
+	    private TextField maxHeightField;
 
-    @FXML
-    private TextField altura;
+	    @FXML
+	    private TextField heightField;
 
-    @FXML
-    private TextField alturaMaxima;
+	    @FXML
+	    private TextField alphaField;
 
-    @FXML
-    private TextField Range;
+	    @FXML
+	    private TextField rangeField;
 
-    @FXML
-    private TextField Alpha;
+	    @FXML
+	    private TextField timeField;
 
-    @FXML
-    private Button calcButton;
-    
-    private Calc2D calculator = new Calc2D();
+	    @FXML
+	    private Label resultLabel;
+
+	    @FXML
+	    private Button calcButton;
 
    @FXML
     private void handleCalculate() {
@@ -90,4 +93,5 @@ public class TwoDController {
     	    }
     }
     */ 
+}
 }
