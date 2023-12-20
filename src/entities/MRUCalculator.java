@@ -1,5 +1,20 @@
 package entities;
-
+/**
+ * A classe MRUCalculator representa um objeto para realizar cálculos de movimento retilíneo uniformemente variado (MRUV).
+ * Ela aceita valores iniciais de velocidade, posição, tempo, aceleração, e unidades para realizar cálculos e fornecer resultados.
+ * As unidades de tempo, velocidade e espaço podem ser especificadas ao criar um objeto MRUCalculator.
+ *
+ * Exemplo de uso:
+ *
+ * ```java
+ * MRUCalculator mru = new MRUCalculator(10.0, 20.0, 5.0, 0.0, 0.0, 2.0, 3.0, "Second", "m/s", "m");
+ * String resultado = mru.calculaDados();
+ * System.out.println(resultado);
+ * ```
+ *
+ * @version 1.0
+ * @since 2023-12-20
+ */
 public class MRUCalculator {
 
     private Double initialVelocity;
@@ -84,7 +99,11 @@ public class MRUCalculator {
         initialPos = finalPos - initialVelocity * t;
         return initialPos;
     }
-    
+    /**
+     * Calcula os dados do movimento retilíneo uniformemente variado (MRUV) com base nos parâmetros fornecidos.
+     *
+     * @return Uma string contendo os resultados dos cálculos.
+     */
     public String calculaDados() {
         StringBuilder resultado = new StringBuilder();
         boolean initVelo = false, finalVelo = false, initPos = false, finPos = false, aCheck = false, tCheck = false, deltaCheck=false;
@@ -216,7 +235,13 @@ public String getUnidadeEspaco() {
 public void setUnidadeEspaco(String unidadeEspaco) {
 	this.unidadeEspaco = unidadeEspaco;
 }
-
+/**
+ * Converte a unidade de velocidade conforme a unidade especificada.
+ *
+ * @param velo Valor de velocidade a ser convertido.
+ * @param unidade Unidade desejada ("m/s", "km/h", "foot/s", "mph").
+ * @return O valor convertido.
+ */
 private double convertTime(double time, String unidade) {
 	double timeConversionFactor;
 	  // Convert time to seconds
@@ -236,6 +261,13 @@ private double convertTime(double time, String unidade) {
     }
     return (time * timeConversionFactor);
 }
+/**
+ * Converte a unidade de espaço conforme a unidade especificada.
+ *
+ * @param space Valor de espaço a ser convertido.
+ * @param unidade Unidade desejada ("m", "km", "foot", "yd", "miles").
+ * @return O valor convertido.
+ */
 private double convertSpace(double space, String unidade) {
 	double spaceConversionFactor;
 	 // Convert space to meters
@@ -262,7 +294,13 @@ private double convertSpace(double space, String unidade) {
     
     return (space * spaceConversionFactor);
 }
-
+/**
+ * Converte a unidade de tempo conforme a unidade especificada.
+ *
+ * @param time Valor de tempo a ser convertido.
+ * @param unidade Unidade desejada ("Second", "Hour", "Minute").
+ * @return O valor convertido.
+ */
 private double convertvelocityUnits(double velo, String unidade) {
     double velocityConversionFactor;
     // Convert velocity to m/s

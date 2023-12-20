@@ -8,7 +8,24 @@ public class Calc2D {
 	public Calc2D() {
 	}
 	
-	
+	 /**
+     * Construtor da classe {@code Calc2D} que permite a inicialização dos atributos com valores específicos.
+     *
+     * @param v     Velocidade resultante
+     * @param vx    Velocidade inicial no eixo x
+     * @param vy0   Velocidade inicial no eixo y
+     * @param vy    Velocidade final no eixo y
+     * @param v0    Velocidade inicial resultante
+     * @param g     Aceleração devido à gravidade
+     * @param t     Tempo
+     * @param h     Altura
+     * @param hmax  Altura máxima
+     * @param alpha Ângulo de lançamento
+     * @param range Alcance
+     * @param time  Unidade de tempo
+     * @param space Unidade de espaço
+     * @param velo  Unidade de velocidade
+     */
 	public Calc2D(double v, double vx, double vy0, double vy, double v0, double g, double t, double h, double hmax,
 			double alpha, double range,String time, String Space, String velo) {
 		this.V = convertVelo(v,velo);
@@ -24,70 +41,112 @@ public class Calc2D {
 		this.range = range;
 	}
 
+	/**
+	 * Calcula várias grandezas relacionadas ao movimento bidimensional e gera uma string com os resultados.
+	 * <p>
+	 * Este método utiliza valores pré-definidos ou calculados para as variáveis relacionadas ao movimento bidimensional,
+	 * tais como velocidades iniciais e finais, tempo de voo, altura máxima, alcance, etc.
+	 * A aceleração devida à gravidade é considerada como 9.81 m/s².
+	 * Os resultados dos cálculos são armazenados internamente nos atributos da classe e retornados como uma string.
+	 * </p>
+	 *
+	 * @return Uma string contendo os resultados dos cálculos.
+	 * @throws IllegalStateException Se ocorrer um erro ao calcular os dados, uma exceção será lançada com uma mensagem de erro.
+	 * @see #horizontal_velocity_component(double, double)
+	 * @see #vertical_velocity_component(double, double, double, double)
+	 * @see #time_of_flight(double, double)
+	 * @see #max_height(double, double)
+	 * @see #range_of_the_projectile(double, double, double)
+	 * @see #range_of_the_projectile(double, double, double, double)
+	 * @see #velocity(double, double)
+	 */
+	public String calculate() throws IllegalStateException {
+	 // Aceleração devida à gravidade
+    g = 9.81;
 
-	public String calculate() {
-	    g = 9.81;
-	    int cont = 0;
-	    StringBuilder resultado = new StringBuilder();
-	    while (cont != 8) {
-	    if (V0 != 0.01 && alpha != 0.01 && Vx == 0.01 && !bool_Vx) {
-	        this.setVx(this.horizontal_velocity_component(V0, alpha));
-	        bool_Vx = true;
-	        resultado.append("Velocidade Inicial X: ").append(Vx).append("m/s \n");
-	    }
+    // Inicialização do contador
+    int cont = 0;
 
-	    if (V0 != 0.01 && alpha != 0.01 && t != 0.01 && Vy == 0.01 && !bool_Vy) {
-	        this.setVy(this.vertical_velocity_component(V0, alpha, g, t));
-	        bool_Vy = true;
-	        resultado.append("Velocidade Inicial Y: ").append(Vy).append("m/s \n");
-	    }
+    // StringBuilder para armazenar os resultados dos cálculos
+    StringBuilder resultado = new StringBuilder();
 
-	    if (Vy0 != 0.01 && t == 0.01 && !bool_t) {
-	        this.setT(this.time_of_flight(Vy0, g));
-	        bool_t = true;
-	        resultado.append("Tempo de Voo: ").append(t).append("s \n");
-	    }
+    // Loop para realizar cálculos até atingir o número máximo de iterações (8)
+    while (cont != 8) {
+        // Cálculo da velocidade inicial no eixo x se necessário
+        if (V0 != 0.01 && alpha != 0.01 && Vx == 0.01 && !bool_Vx) {
+            this.setVx(this.horizontal_velocity_component(V0, alpha));
+            bool_Vx = true;
+            resultado.append("Velocidade Inicial X: ").append(Vx).append("m/s \n");
+        }
 
-	    if (Vy0 != 0.01 && hmax == 0.01 && !bool_hmax) {
-	        this.setHmax(this.max_height(Vy0, g));
-	        bool_hmax = true;
-	        resultado.append("Altura Máxima: ").append(hmax).append("m \n");
-	    }
+        // Cálculo da velocidade inicial no eixo y se necessário
+        if (V0 != 0.01 && alpha != 0.01 && t != 0.01 && Vy == 0.01 && !bool_Vy) {
+            this.setVy(this.vertical_velocity_component(V0, alpha, g, t));
+            bool_Vy = true;
+            resultado.append("Velocidade Inicial Y: ").append(Vy).append("m/s \n");
+        }
 
-	    if (Vy0 != 0.01 && Vx != 0.01 && range == 0.01 && !bool_range) {
-	        this.setRange(this.range_of_the_projectile(Vx, Vy0, g));
-	        bool_range = true;
-	        resultado.append("Alcance: ").append(range).append("m \n");
-	    }
+        // Cálculo do tempo de voo se necessário
+        if (Vy0 != 0.01 && t == 0.01 && !bool_t) {
+            this.setT(this.time_of_flight(Vy0, g));
+            bool_t = true;
+            resultado.append("Tempo de Voo: ").append(t).append("s \n");
+        }
 
-	    if (Vy0 != 0.01 && h != 0.01 && t == 0.01 && !bool_t) {
-	        this.setT(this.time_of_flight(Vy0, g, h));
-	        bool_t = true;
-	        resultado.append("Tempo de Voo: ").append(t).append("s \n");
-	    }
+        // Cálculo da altura máxima se necessário
+        if (Vy0 != 0.01 && hmax == 0.01 && !bool_hmax) {
+            this.setHmax(this.max_height(Vy0, g));
+            bool_hmax = true;
+            resultado.append("Altura Máxima: ").append(hmax).append("m \n");
+        }
 
-	    if (Vy0 != 0.01 && h != 0.01 && hmax == 0.01 && !bool_hmax) {
-	        this.setHmax(this.max_height(h, Vy0, g));
-	        bool_hmax = true;
-	        resultado.append("Altura Máxima: ").append(hmax).append("m \n");
-	    }
+        // Cálculo do alcance se necessário
+        if (Vy0 != 0.01 && Vx != 0.01 && range == 0.01 && !bool_range) {
+            this.setRange(this.range_of_the_projectile(Vx, Vy0, g));
+            bool_range = true;
+            resultado.append("Alcance: ").append(range).append("m \n");
+        }
 
-	    if (Vx != 0.01 && Vy0 != 0.01 && h != 0.01 && range == 0.01 && !bool_range) {
-	        this.setRange(this.range_of_the_projectile(Vx, Vy0, g, h));
-	        bool_range = true;
-	        resultado.append("Alcance: ").append(range).append("m \n");
-	    }
+        // Cálculo do tempo de voo com altura específica se necessário
+        if (Vy0 != 0.01 && h != 0.01 && t == 0.01 && !bool_t) {
+            this.setT(this.time_of_flight(Vy0, g, h));
+            bool_t = true;
+            resultado.append("Tempo de Voo: ").append(t).append("s \n");
+        }
 
-	    if (Vx != 0.01 && Vy != 0.01 && V == 0.01 && !bool_V) {
-	        this.setV(this.velocity(Vx, Vy));
-	        bool_V = true;
-	        resultado.append("Velocidade Resultante: ").append(V).append("m/s \n");
-	    }
-	    cont++;
-	    }
-	    return resultado.toString();
-	}
+        // Cálculo da altura máxima com altura específica se necessário
+        if (Vy0 != 0.01 && h != 0.01 && hmax == 0.01 && !bool_hmax) {
+            this.setHmax(this.max_height(h, Vy0, g));
+            bool_hmax = true;
+            resultado.append("Altura Máxima: ").append(hmax).append("m \n");
+        }
 
+        // Cálculo do alcance com altura específica se necessário
+        if (Vx != 0.01 && Vy0 != 0.01 && h != 0.01 && range == 0.01 && !bool_range) {
+            this.setRange(this.range_of_the_projectile(Vx, Vy0, g, h));
+            bool_range = true;
+            resultado.append("Alcance: ").append(range).append("m \n");
+        }
+
+        // Cálculo da velocidade resultante se necessário
+        if (Vx != 0.01 && Vy != 0.01 && V == 0.01 && !bool_V) {
+            this.setV(this.velocity(Vx, Vy));
+            bool_V = true;
+            resultado.append("Velocidade Resultante: ").append(V).append("m/s \n");
+        }
+
+        // Incremento do contador
+        cont++;
+    }
+
+    // Retorna a string com os resultados dos cálculos
+    return resultado.toString();}
+
+	 // Outros métodos da classe omitidos para simplificação
+
+    // Getters e setters da classe omitidos para simplificação
+
+    // Métodos privados de conversão de unidades omitidos para simplificação
 	
 	double horizontal_velocity_component(double V0, double alpha) {
 		return V0 * Math.cos(alpha);

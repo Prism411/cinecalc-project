@@ -89,7 +89,7 @@ public class TwoDController implements Initializable {
    	    alert.setContentText("Por favor, selecione todas as unidades de medida!.");
    	    alert.showAndWait();}else {
 	    try {
-	        // Read values from text fields
+	        // le os valores
 	        double v0 = parseTextField(velocityInitialField.getText(), 0.01);
 	        double v = parseTextField(velocityFinalField.getText(), 0.01);
 	        double initialVerticalVelocity = parseTextField(initialVerticalVelocityField.getText(), 0.01);
